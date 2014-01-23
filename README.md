@@ -1,4 +1,4 @@
-# mocha-cov-reporter [![Build Status](https://travis-ci.org/clebert/mocha-cov-reporter.png?branch=master)](https://travis-ci.org/clebert/mocha-cov-reporter) [![Coverage Status](https://coveralls.io/repos/clebert/mocha-cov-reporter/badge.png)](https://coveralls.io/r/clebert/mocha-cov-reporter) [![Code Climate](https://codeclimate.com/github/clebert/mocha-cov-reporter.png)](https://codeclimate.com/github/clebert/mocha-cov-reporter) [![NPM version](https://badge.fury.io/js/mocha-cov-reporter.png)](http://badge.fury.io/js/mocha-cov-reporter)
+# mocha-cov-reporter [![Build Status](https://travis-ci.org/clebert/mocha-cov-reporter.png?branch=master)](https://travis-ci.org/clebert/mocha-cov-reporter) [![Code Climate](https://codeclimate.com/github/clebert/mocha-cov-reporter.png)](https://codeclimate.com/github/clebert/mocha-cov-reporter) [![NPM version](https://badge.fury.io/js/mocha-cov-reporter.png)](http://badge.fury.io/js/mocha-cov-reporter)
 
 TODO.
 
