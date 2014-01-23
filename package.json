@@ -1,0 +1,44 @@
+{
+    "name": "mocha-cov-reporter",
+    "version": "0.0.0",
+    "description": "TODO.",
+    "keywords": [
+        "TODO"
+    ],
+    "author": {
+        "name": "Clemens Akens",
+        "email": "clebert@me.com",
+        "url": "http://clebert.com/"
+    },
+    "bugs": {
+        "url": "https://github.com/clebert/mocha-cov-reporter/issues"
+    },
+    "engines": {
+        "node": ">= 0.10.0"
+    },
+    "inceptionYear": "2014",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/clebert/mocha-cov-reporter/master/LICENSE"
+        }
+    ],
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/clebert/mocha-cov-reporter.git"
+    },
+    "scripts": {
+        "test": "node_modules/.bin/grunt"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-bumpup": "~0.5.0",
+        "grunt-cli": "~0.1.11",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-jshint": "~0.8.0",
+        "grunt-git": "~0.2.4",
+        "grunt-helper": "~0.2.0",
+        "grunt-tagrelease": "~0.3.1"
+    }
+}
