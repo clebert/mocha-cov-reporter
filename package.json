@@ -1,9 +1,13 @@
 {
     "name": "mocha-cov-reporter",
     "version": "0.0.0",
-    "description": "TODO.",
+    "description": "A code coverage reporter for Mocha with Blanket.js.",
     "keywords": [
-        "TODO"
+        "blanket",
+        "code",
+        "coverage",
+        "mocha",
+        "reporter"
     ],
     "author": {
         "name": "Clemens Akens",
