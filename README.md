@@ -8,7 +8,13 @@ A code coverage reporter for [Mocha](http://visionmedia.github.io/mocha/) with [
 
 ## Usage
 
-TODO.
+Add the following to your project's package.json file:
+
+    "config": {
+        "mocha-cov-reporter": {
+            "threshold": 100
+        }
+    }
 
 ## Running the tests
 
