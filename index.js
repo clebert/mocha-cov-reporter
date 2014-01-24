@@ -43,16 +43,18 @@ function MochaCovReporter(runner) {
             failed,
             message;
 
-        Object.keys(data).forEach(function (filename) {
-            data[filename].forEach(function (result) {
-                if (result === 0) {
-                    sloc += 1;
-                } else if (result) {
-                    hits += 1;
-                    sloc += 1;
-                }
+        if (data) {
+            Object.keys(data).forEach(function (filename) {
+                data[filename].forEach(function (result) {
+                    if (result === 0) {
+                        sloc += 1;
+                    } else if (result) {
+                        hits += 1;
+                        sloc += 1;
+                    }
+                });
             });
-        });
+        }
 
         if (sloc > 0) {
             coverage = Math.floor(hits / sloc * 100);
