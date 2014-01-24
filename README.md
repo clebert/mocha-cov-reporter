@@ -12,7 +12,8 @@ Add the following to your project's package.json file:
 
     "config": {
         "mocha-cov-reporter": {
-            "threshold": 100
+            "threshold": 100,
+            "useColors": true
         }
     }
 

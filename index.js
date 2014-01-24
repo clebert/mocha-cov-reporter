@@ -2,35 +2,65 @@
 
 var fs = require('fs'),
     path = require('path'),
-    pkg = require('./package');
+    pkg = require('./package'),
+    userPkg;
 
-function getThreshold() {
-    var filename = path.join(process.cwd(), 'package.json'),
-        defaultThreshold = 50,
-        threshold,
-        userPkg;
+function loadUserPkg() {
+    var filename = path.join(process.cwd(), 'package.json');
 
     if (fs.existsSync(filename)) {
         userPkg = JSON.parse(fs.readFileSync(filename, 'utf8'));
+    } else {
+        userPkg = {};
+    }
+}
 
-        if (userPkg.config && userPkg.config[pkg.name]) {
-            threshold = parseInt(userPkg.config[pkg.name].threshold, 10);
+loadUserPkg();
 
-            if (isFinite(threshold)) {
-                if (threshold < 0) {
-                    return 0;
-                }
+function getThreshold() {
+    var threshold;
 
-                if (threshold > 100) {
-                    return 100;
-                }
+    if (userPkg.config && userPkg.config[pkg.name]) {
+        threshold = parseInt(userPkg.config[pkg.name].threshold, 10);
 
-                return threshold;
+        if (isFinite(threshold)) {
+            if (threshold < 0) {
+                return 0;
             }
+
+            if (threshold > 100) {
+                return 100;
+            }
+
+            return threshold;
         }
     }
 
-    return defaultThreshold;
+    return 50;
+}
+
+function getUseColors() {
+    if (userPkg.config && userPkg.config[pkg.name]) {
+        return !!userPkg.config[pkg.name].useColors;
+    }
+
+    return false;
+}
+
+function colorize(code, message) {
+    if (!getUseColors()) {
+        return message;
+    }
+
+    return '\u001b[' + code + 'm' + message + '\u001b[0m';
+}
+
+function colorizeGreen(message) {
+    return colorize(32, message);
+}
+
+function colorizeRed(message) {
+    return colorize(31, message);
 }
 
 function MochaCovReporter(runner) {
@@ -63,9 +93,11 @@ function MochaCovReporter(runner) {
         failed = coverage < threshold;
 
         if (failed) {
-            message = 'Coverage below threshold: %d% < %d% (SLOC %d)';
+            message = colorizeRed(
+                'Coverage below threshold: %d% < %d% (SLOC %d)'
+            );
         } else {
-            message = 'Coverage succeeded: %d% >= %d% (SLOC %d)';
+            message = colorizeGreen('Coverage succeeded: %d% >= %d% (SLOC %d)');
         }
 
         console.log(message, coverage, threshold, sloc);
@@ -74,7 +106,7 @@ function MochaCovReporter(runner) {
     });
 
     runner.on('fail', function() {
-        console.log('Tests failed.');
+        console.log(colorizeRed('Tests failed.'));
 
         process.exit(1);
     });
