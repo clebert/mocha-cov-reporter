@@ -6,7 +6,7 @@
 
     $ npm install mocha-cov-reporter --save-dev
 
-## Usage Example
+## Usage
 
 Add the following fields to your project's package.json file:
 
