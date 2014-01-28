@@ -1,7 +1,7 @@
 {
     "name": "mocha-cov-reporter",
     "version": "0.2.0",
-    "description": "A code coverage reporter for Mocha with Blanket.js.",
+    "description": "A code coverage reporter for Mocha/Blanket.js.",
     "keywords": [
         "blanket",
         "code",
@@ -20,7 +20,7 @@
     "engines": {
         "node": ">= 0.10.0"
     },
-    "inceptionYear": "2014",
+    "inceptionYear": 2014,
     "licenses": [
         {
             "type": "MIT",
@@ -38,11 +38,8 @@
     "devDependencies": {
         "grunt": "~0.4.2",
         "grunt-bumpup": "~0.5.0",
-        "grunt-cli": "~0.1.12",
-        "grunt-contrib-concat": "~0.3.0",
+        "grunt-cli": "~0.1.13",
         "grunt-contrib-jshint": "~0.8.0",
-        "grunt-git": "~0.2.4",
-        "grunt-helper": "~0.3.1",
-        "grunt-tagrelease": "~0.3.1"
+        "grunt-module": "~0.1.0"
     }
 }

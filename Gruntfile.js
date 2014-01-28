@@ -1,58 +1,67 @@
 'use strict';
 
-var helper = require('grunt-helper');
-
 module.exports = function (grunt) {
-    var pkg = grunt.file.readJSON('package.json');
-
     grunt.initConfig({
-        pkg: pkg,
-        bumpup: helper.config.bumpup(),
-        concat: helper.config.concat(pkg),
-        gitpush: helper.config.gitpush(),
-        jshint: helper.config.jshint(),
-        tagrelease: helper.config.tagrelease()
+        bumpup: {
+            file: 'package.json'
+        },
+        jshint: {
+            'lint-js': {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                src: [
+                    '**/*.js',
+                    '!node_modules/**/*.js'
+                ]
+            },
+            'lint-json': {
+                src: [
+                    '**/*.json',
+                    '!node_modules/**/*.json'
+                ]
+            }
+        },
+        module: {
+            'check-repository': {
+                options: {
+                    check: true
+                }
+            },
+            'license-copyright': {
+                options: {
+                    replace: true,
+                    line: 3
+                },
+                src: 'LICENSE'
+            },
+            'release-publish': {
+                options: {
+                    release: true,
+                    publish: true
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-bumpup');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-git');
-    grunt.loadNpmTasks('grunt-tagrelease');
+    grunt.loadNpmTasks('grunt-module');
 
-    grunt.registerTask('default', [
-        'lint'
-    ]);
+    grunt.registerTask('default', 'lint');
 
     grunt.registerTask('lint', [
         'jshint:lint-js',
         'jshint:lint-json'
     ]);
 
-    grunt.registerTask('package', [
-        'concat:package-license'
-    ]);
-
-    grunt.registerTask('release', function (type) {
-        var done = this.async();
-
-        helper.checkGitRepository(grunt, function (error) {
-            if (error) {
-                done(error);
-            } else {
-                grunt.task.run('lint');
-                grunt.task.run('bumpup:' + (type || 'patch'));
-                grunt.task.run('package');
-                grunt.task.run('tagrelease');
-                grunt.task.run('gitpush:release-all');
-                grunt.task.run('gitpush:release-tags');
-
-                done(true);
-            }
-        });
+    grunt.registerTask('publish', function (type) {
+        grunt.task.run('lint');
+        grunt.task.run('module:check-repository');
+        grunt.task.run('bumpup:' + (type || 'patch'));
+        grunt.task.run('module:license-copyright');
+        grunt.task.run('module:release-publish');
     });
 
-    grunt.registerTask('travis', [
-        'lint'
-    ]);
+    grunt.registerTask('travis', 'lint');
 };
