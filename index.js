@@ -63,7 +63,7 @@ function colorizeRed(message) {
     return colorize(31, message);
 }
 
-function MochaCovReporter(runner) {
+module.exports = function (runner) {
     runner.on('end', function() {
         var coverage = 100,
             data = global._$jscoverage,
@@ -110,6 +110,4 @@ function MochaCovReporter(runner) {
 
         process.exit(1);
     });
-}
-
-module.exports = MochaCovReporter;
+};
