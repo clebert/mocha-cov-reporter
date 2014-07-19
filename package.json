@@ -24,22 +24,25 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://raw.github.com/clebert/mocha-cov-reporter/master/LICENSE"
+            "url": "https://raw.githubusercontent.com/clebert/mocha-cov-reporter/master/LICENSE"
         }
     ],
-    "main": "index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/clebert/mocha-cov-reporter.git"
     },
+    "main": "index.js",
     "scripts": {
         "test": "node_modules/.bin/grunt"
     },
+    "dependencies": {
+        "promise": "~5.0.0"
+    },
     "devDependencies": {
-        "grunt": "~0.4.2",
-        "grunt-bumpup": "~0.5.0",
+        "grunt": "~0.4.5",
+        "grunt-bumpup": "~0.6.0",
         "grunt-cli": "~0.1.13",
-        "grunt-contrib-jshint": "~0.8.0",
-        "grunt-module": "~0.1.2"
+        "grunt-eslint": "~0.6.0",
+        "grunt-module": "~0.3.0"
     }
 }
