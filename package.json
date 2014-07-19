@@ -31,12 +31,9 @@
         "type": "git",
         "url": "https://github.com/clebert/mocha-cov-reporter.git"
     },
-    "main": "index.js",
+    "main": "lib/reporter.js",
     "scripts": {
         "test": "node_modules/.bin/grunt"
-    },
-    "dependencies": {
-        "promise": "~5.0.0"
     },
     "devDependencies": {
         "grunt": "~0.4.5",
