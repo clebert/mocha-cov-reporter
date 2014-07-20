@@ -34,6 +34,17 @@ Please add the following fields to your project's `package.json` file:
     }
 }
 ```
+
+## Sample Output
+
+```
+Coverage succeeded: 100% >= 100% (SLOC 85)
+```
+
+```
+Coverage below threshold: 75% < 100% (SLOC 85)
+```
+
 ## Running Tests
 
 To run the test suite first install the development dependencies:

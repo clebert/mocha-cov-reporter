@@ -3,11 +3,11 @@
     "version": "0.2.3",
     "description": "A code coverage reporter for Mocha/Blanket.js.",
     "keywords": [
-        "blanket",
         "code",
         "coverage",
+        "reporter",
         "mocha",
-        "reporter"
+        "blanket"
     ],
     "author": {
         "name": "Clemens Akens",
