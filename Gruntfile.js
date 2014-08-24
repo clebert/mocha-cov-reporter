@@ -5,10 +5,15 @@ module.exports = function (grunt) {
         bumpup: {
             file: 'package.json'
         },
-        eslint: {
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
             src: [
                 '**/*.js',
-                '!node_modules/**/*.js'
+                '**/*.json',
+                '!node_modules/**/*.js',
+                '!node_modules/**/*.json'
             ]
         },
         module: {
@@ -33,11 +38,11 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-bumpup');
-    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-module');
 
-    grunt.registerTask('default', 'eslint');
+    grunt.registerTask('default', 'jshint');
 
     grunt.registerTask('publish', function (type) {
         grunt.task.run('default');
