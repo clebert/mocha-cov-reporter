@@ -40,6 +40,6 @@
         "grunt-contrib-jshint": "~0.10.0",
         "grunt-bumpup": "~0.6.1",
         "grunt-cli": "~0.1.13",
-        "grunt-module": "~1.0.2"
+        "grunt-module": "~1.2.0"
     }
 }
