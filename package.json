@@ -41,7 +41,7 @@
         "grunt-cli": "~0.1.13",
         "grunt-contrib-jshint": "~0.10.0",
         "grunt-jscs": "~0.8.1",
-        "grunt-module": "~1.2.0",
+        "grunt-module": "~1.2.1",
         "time-grunt": "~1.0.0"
     }
 }
