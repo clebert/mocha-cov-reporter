@@ -37,9 +37,11 @@
     },
     "devDependencies": {
         "grunt": "~0.4.5",
-        "grunt-contrib-jshint": "~0.10.0",
-        "grunt-bumpup": "~0.6.1",
+        "grunt-bumpup": "~0.6.2",
         "grunt-cli": "~0.1.13",
-        "grunt-module": "~1.2.0"
+        "grunt-contrib-jshint": "~0.10.0",
+        "grunt-jscs": "~0.8.1",
+        "grunt-module": "~1.2.0",
+        "time-grunt": "~1.0.0"
     }
 }
