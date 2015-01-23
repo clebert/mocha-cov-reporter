@@ -1,12 +1,17 @@
 'use strict';
 
-var time = require('time-grunt');
+var tasks = require('load-grunt-tasks');
+var time  = require('time-grunt');
 
 module.exports = function (grunt) {
     time(grunt);
+    tasks(grunt);
 
     grunt.initConfig({
         bumpup: {
+            options: {
+                newlineEof: true
+            },
             file: 'package.json'
         },
         jscs: {
@@ -32,6 +37,7 @@ module.exports = function (grunt) {
         module: {
             'check-repository': {
                 options: {
+                    branch: 'master',
                     check: true
                 }
             },
@@ -51,25 +57,20 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-bumpup');
-    grunt.loadNpmTasks('grunt-jscs');
-    grunt.loadNpmTasks('grunt-module');
-
-    grunt.registerTask('build', [
+    grunt.registerTask('test', [
         'jscs',
         'jshint'
     ]);
 
     grunt.registerTask('publish', function (type) {
-        grunt.task.run('build');
+        grunt.task.run('test');
         grunt.task.run('module:check-repository');
         grunt.task.run('bumpup:' + type);
         grunt.task.run('module:license-copyright');
         grunt.task.run('module:release-publish');
     });
 
-    grunt.registerTask('travis', 'build');
+    grunt.registerTask('travis', 'test');
 
-    grunt.registerTask('default', 'build');
+    grunt.registerTask('default', 'test');
 };
